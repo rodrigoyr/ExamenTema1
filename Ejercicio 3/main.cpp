@@ -12,10 +12,10 @@ void intercambiar(int *ptr1, int *ptr2) {
 int main() {
     int num1, num2;
 
-    std::cout << "Ingrese el primer número: ";
+    std::cout << "Ingrese el primer numero: ";
     std::cin >> num1;
 
-    std::cout << "Ingrese el segundo número: ";
+    std::cout << "Ingrese el segundo numero: ";
     std::cin >> num2;
 
     std::cout << "Valores originales: num1 = " << num1 << ", num2 = " << num2 << std::endl;
