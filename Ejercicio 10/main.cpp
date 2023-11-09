@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Profesor {
 public:
@@ -21,10 +22,39 @@ public:
 };
 
 int main() {
-    Profesor profesor1("Juan Pérez", 35, "Matemáticas", 10);
+    std::vector<Profesor> listaProfesores;
 
-    // Llamar a la función miembro para mostrar la información del profesor
-    profesor1.mostrar_info_profesor();
+    while (true) {
+        std::string nombre, materiaImparte;
+        int edad, anosDocencia;
+
+        std::cout << "Ingrese el nombre del profesor (o escriba 'fin' para terminar): ";
+        std::cin.ignore();
+        std::getline(std::cin, nombre);
+
+        if (nombre == "fin") {
+            break;
+        }
+
+        std::cout << "Ingrese la edad del profesor: ";
+        std::cin >> edad;
+        std::cout << "Ingrese la materia que imparte el profesor: ";
+        std::cin.ignore();
+        std::getline(std::cin, materiaImparte);
+        std::cout << "Ingrese los años de docencia del profesor: ";
+        std::cin >> anosDocencia;
+
+        Profesor nuevoProfesor(nombre, edad, materiaImparte, anosDocencia);
+        listaProfesores.push_back(nuevoProfesor);
+
+        std::cout << "Profesor registrado." << std::endl;
+    }
+
+    std::cout << "Listado de profesores:" << std::endl;
+    for (const Profesor& profesor : listaProfesores) {
+        profesor.mostrar_info_profesor();
+        std::cout << std::endl;
+    }
 
     return 0;
 }
