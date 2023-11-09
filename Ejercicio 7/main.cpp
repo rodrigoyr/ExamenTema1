@@ -20,7 +20,7 @@ public:
     }
 
     void mostrarInformacionAsistencia() {
-        std::cout << "Información de asistencia para el estudiante " << nombre << ":" << std::endl;
+        std::cout << "Informacion de asistencia para el estudiante " << nombre << ":" << std::endl;
         for (const Asistencia& asistencia : asistencias) {
             std::cout << "Fecha: " << asistencia.fecha << ", Estado: " << asistencia.estado << std::endl;
         }
