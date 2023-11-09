@@ -1,5 +1,10 @@
 #include <iostream>
 
+// Declaración de la función intercambiar
+void intercambiar(int *ptr1, int *ptr2);
+
+// Definición de la función intercambiar
+
 void intercambiar(int *ptr1, int *ptr2) {
     int temp = *ptr1;
     *ptr1 = *ptr2;
