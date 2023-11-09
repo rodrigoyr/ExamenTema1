@@ -6,7 +6,7 @@ class RegistroAsistencia {
 public:
     RegistroAsistencia(const std::string& fecha, const std::string& estado) : fecha(fecha), estado(estado) {}
 
-    void mostrar_asistencia() {
+    void mostrar_asistencia() const {
         std::cout << "Fecha de la clase: " << fecha << std::endl;
         std::cout << "Estado de asistencia: " << estado << std::endl;
     }
