@@ -51,4 +51,7 @@ int main() {
         std::cin.ignore(); // Limpiar el buffer del teclado
     }
 
-    estudiante.mostrar
+    estudiante.mostrarInformacionAsistencia();
+
+    return 0;
+}
