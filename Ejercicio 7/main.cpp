@@ -2,50 +2,53 @@
 #include <string>
 #include <vector>
 
-class RegistroAsistencia {
-public:
-    RegistroAsistencia(const std::string& fecha, const std::string& estado) : fecha(fecha), estado(estado) {}
-
-    void mostrar_asistencia() const {
-        std::cout << "Fecha de la clase: " << fecha << std::endl;
-        std::cout << "Estado de asistencia: " << estado << std::endl;
-    }
-
-private:
+struct Asistencia {
     std::string fecha;
     std::string estado;
 };
 
-int main() {
-    std::vector<RegistroAsistencia> asistencias;
+class Estudiante {
+public:
+    std::string nombre;
+    std::vector<Asistencia> asistencias;
 
-    while (true) {
+    void agregarAsistencia(const std::string& fecha, const std::string& estado) {
+        Asistencia nuevaAsistencia;
+        nuevaAsistencia.fecha = fecha;
+        nuevaAsistencia.estado = estado;
+        asistencias.push_back(nuevaAsistencia);
+    }
+
+    void mostrarInformacionAsistencia() {
+        std::cout << "Información de asistencia para el estudiante " << nombre << ":" << std::endl;
+        for (const Asistencia& asistencia : asistencias) {
+            std::cout << "Fecha: " << asistencia.fecha << ", Estado: " << asistencia.estado << std::endl;
+        }
+    }
+};
+
+int main() {
+    Estudiante estudiante;
+
+    std::cout << "Ingrese el nombre del estudiante: ";
+    std::getline(std::cin, estudiante.nombre);
+
+    char continuar = 's';
+
+    while (continuar == 's' || continuar == 'S') {
         std::string fecha, estado;
-        std::cout << "Ingrese la fecha de la clase (o escriba 'fin' para terminar): ";
-        std::cin.ignore();
+
+        std::cout << "Ingrese la fecha de la clase: ";
         std::getline(std::cin, fecha);
 
-        if (fecha == "fin") {
-            break;
-        }
-
         std::cout << "Estado de asistencia (asistio, falta, tardanza): ";
-        std::cin >> estado;
+        std::getline(std::cin, estado);
 
-        if (estado != "asistio" && estado != "falta" && estado != "tardanza") {
-            std::cout << "Estado de asistencia no válido. Debe ser 'asistio', 'falta' o 'tardanza'." << std::endl;
-            continue;
-        }
+        estudiante.agregarAsistencia(fecha, estado);
 
-        RegistroAsistencia registro(fecha, estado);
-        asistencias.push_back(registro);
+        std::cout << "¿Desea ingresar otra asistencia? (s/n): ";
+        std::cin >> continuar;
+        std::cin.ignore(); // Limpiar el buffer del teclado
     }
 
-    std::cout << "Asistencias registradas:" << std::endl;
-    for (const RegistroAsistencia& registro : asistencias) {
-        registro.mostrar_asistencia();
-        std::cout << std::endl;
-    }
-
-    return 0;
-}
+    estudiante.mostrar
