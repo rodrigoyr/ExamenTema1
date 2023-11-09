@@ -26,3 +26,18 @@ public:
     }
 };
 
+int main() {
+    Estudiante estudiante1;
+    estudiante1.nombre = "Juan";
+
+    try {
+        estudiante1.registrarMateria("Matemáticas");
+        estudiante1.registrarMateria("Historia");
+        estudiante1.registrarMateria("Biología");
+        estudiante1.registrarMateria("Matemáticas");  // Intento de registrar la misma materia nuevamente
+    } catch (const MateriaYaRegistradaExcepcion& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
