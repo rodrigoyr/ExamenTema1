@@ -39,7 +39,6 @@ int main() {
 
             Estudiante estudiante(nombre, edad);
 
-            // Agregar el estudiante al grado correspondiente
             grados[grado].push_back(estudiante);
 
             std::cout << "Estudiante agregado al grado " << grado << std::endl;
@@ -49,7 +48,6 @@ int main() {
             std::cin.ignore();
             std::getline(std::cin, grado);
 
-            // Verificar si el grado existe en el mapa
             if (grados.find(grado) != grados.end()) {
                 std::cout << "Estudiantes en el grado " << grado << ":" << std::endl;
                 for (const Estudiante& estudiante : grados[grado]) {
