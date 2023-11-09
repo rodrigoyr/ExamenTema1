@@ -38,7 +38,8 @@ public:
     void mostrar_materias() {
         if (materias.empty()) {
             std::cout << "El estudiante no tiene materias registradas." << std::endl;
-        } else {
+        }
+        else {
             std::cout << "Materias registradas para " << nombre << ":" << std::endl;
             for (const std::string& materia : materias) {
                 std::cout << "- " << materia << std::endl;
@@ -55,21 +56,29 @@ int main() {
     std::cout << "Información del estudiante:" << std::endl;
     estudiante1.mostrar_info();
 
-    // Registrar materias
-    std::cout << "Registrar materias del estudiante:" << std::endl;
+    int opcion;
     while (true) {
-        std::string materia;
-        std::cout << "Ingrese una materia (o escriba 'fin' para terminar): ";
-        std::cin.ignore();
-        std::getline(std::cin, materia);
-        if (materia == "fin") {
-            break;
-        }
-        estudiante1.registrar_materia(materia);
-    }
+        std::cout << "Opciones:" << std::endl;
+        std::cout << "1. Ver materias añadidas" << std::endl;
+        std::cout << "2. Agregar nuevas materias" << std::endl;
+        std::cout << "3. Salir" << std::endl;
+        std::cout << "Elija una opción: ";
+        std::cin >> opcion;
 
-    // Mostrar las materias registradas
-    estudiante1.mostrar_materias();
+        if (opcion == 1) {
+            estudiante1.mostrar_materias();
+        } else if (opcion == 2) {
+            std::string nueva_materia;
+            std::cout << "Ingrese una nueva materia: ";
+            std::cin.ignore();
+            std::getline(std::cin, nueva_materia);
+            estudiante1.registrar_materia(nueva_materia);
+        } else if (opcion == 3) {
+            break;
+        } else {
+            std::cout << "Opción no válida. Por favor, elija una opción válida." << std::endl;
+        }
+    }
 
     return 0;
 }
