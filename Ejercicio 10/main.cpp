@@ -34,10 +34,14 @@ int main() {
         std::cin >> opcion;
 
         if (opcion == 1) {
-            std::cout << "Listado de profesores:" << std::endl;
-            for (const Profesor& profesor : listaProfesores) {
-                profesor.mostrar_info_profesor();
-                std::cout << std::endl;
+            if (listaProfesores.empty()) {
+                std::cout << "No hay profesores registrados." << std::endl;
+            } else {
+                std::cout << "Listado de profesores:" << std::endl;
+                for (const Profesor& profesor : listaProfesores) {
+                    profesor.mostrar_info_profesor();
+                    std::cout << std::endl;
+                }
             }
         } else if (opcion == 2) {
             std::string nombre, materiaImparte;
