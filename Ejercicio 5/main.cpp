@@ -1,43 +1,75 @@
 #include <iostream>
-#include <list>
 #include <string>
+#include <vector>
 
 class Estudiante {
 public:
-    Estudiante(std::string nombre) : nombre(nombre) {}
+    // Propiedades de la clase
+    std::string nombre;
+    int edad;
+    std::string grado;
+    std::vector<std::string> materias;  // Lista de materias registradas
 
-    void registrar_materias(const std::string& materia) {
+    // Función miembro para mostrar la información del estudiante
+    void mostrar_info() {
+        std::cout << "Nombre: " << nombre << std::endl;
+        std::cout << "Edad: " << edad << " años" << std::endl;
+        std::cout << "Grado: " << grado << std::endl;
+    }
+
+    // Función miembro para ingresar la información del estudiante
+    void ingresar_info() {
+        std::cout << "Ingrese el nombre del estudiante: ";
+        std::cin.ignore();  // Para limpiar el buffer de entrada
+        std::getline(std::cin, nombre);
+        std::cout << "Ingrese la edad del estudiante: ";
+        std::cin >> edad;
+        std::cout << "Ingrese el grado del estudiante: ";
+        std::cin.ignore();  // Para limpiar el buffer de entrada
+        std::getline(std::cin, grado);
+    }
+
+    // Función para registrar materias
+    void registrar_materia(const std::string& materia) {
         materias.push_back(materia);
     }
 
+    // Función para mostrar las materias registradas
     void mostrar_materias() {
         if (materias.empty()) {
-            std::cout << "El estudiante " << nombre << " no tiene materias registradas." << std::endl;
+            std::cout << "El estudiante no tiene materias registradas." << std::endl;
         } else {
-            std::cout << "Materias registradas por " << nombre << ":" << std::endl;
+            std::cout << "Materias registradas para " << nombre << ":" << std::endl;
             for (const std::string& materia : materias) {
                 std::cout << "- " << materia << std::endl;
             }
         }
     }
-
-private:
-    std::string nombre;
-    std::list<std::string> materias;
 };
 
 int main() {
-    Estudiante estudiante1("Juan");
-    estudiante1.registrar_materias("Matemáticas");
-    estudiante1.registrar_materias("Historia");
-    estudiante1.registrar_materias("Biología");
+    Estudiante estudiante1;
 
-    Estudiante estudiante2("María");
-    estudiante2.registrar_materias("Química");
-    estudiante2.registrar_materias("Física");
+    estudiante1.ingresar_info();
 
+    std::cout << "Información del estudiante:" << std::endl;
+    estudiante1.mostrar_info();
+
+    // Registrar materias
+    std::cout << "Registrar materias del estudiante:" << std::endl;
+    while (true) {
+        std::string materia;
+        std::cout << "Ingrese una materia (o escriba 'fin' para terminar): ";
+        std::cin.ignore();
+        std::getline(std::cin, materia);
+        if (materia == "fin") {
+            break;
+        }
+        estudiante1.registrar_materia(materia);
+    }
+
+    // Mostrar las materias registradas
     estudiante1.mostrar_materias();
-    estudiante2.mostrar_materias();
 
     return 0;
 }
