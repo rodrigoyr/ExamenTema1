@@ -4,20 +4,17 @@
 
 class Estudiante {
 public:
-    // Propiedades de la clase
     std::string nombre;
     int edad;
     std::string grado;
-    std::vector<std::string> materias;  // Lista de materias registradas
+    std::vector<std::string> materias;
 
-    // Función miembro para mostrar la información del estudiante
     void mostrar_info() {
         std::cout << "Nombre: " << nombre << std::endl;
         std::cout << "Edad: " << edad << " años" << std::endl;
         std::cout << "Grado: " << grado << std::endl;
     }
 
-    // Función miembro para ingresar la información del estudiante
     void ingresar_info() {
         std::cout << "Ingrese el nombre del estudiante: ";
         std::cin.ignore();  // Para limpiar el buffer de entrada
@@ -53,7 +50,7 @@ int main() {
 
     estudiante1.ingresar_info();
 
-    std::cout << "Información del estudiante:" << std::endl;
+    std::cout << "Informacion del estudiante:" << std::endl;
     estudiante1.mostrar_info();
 
     int opcion;
