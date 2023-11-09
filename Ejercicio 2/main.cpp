@@ -17,19 +17,17 @@ public:
 int main() {
     Estudiante estudiante;
 
-    // Ingresar información del estudiante
     std::cout << "Ingrese el nombre del estudiante: ";
     std::getline(std::cin, estudiante.nombre);
 
     std::cout << "Ingrese la edad del estudiante: ";
     std::cin >> estudiante.edad;
-    std::cin.ignore(); // Limpiar el buffer del teclado
+    std::cin.ignore();
 
     std::cout << "Ingrese el grado del estudiante: ";
     std::getline(std::cin, estudiante.grado);
 
-    // Mostrar la información del estudiante
-    std::cout << "\nInformación del estudiante:" << std::endl;
+    std::cout << "\nInformacion del estudiante:" << std::endl;
     estudiante.mostrar_info();
 
     return 0;
