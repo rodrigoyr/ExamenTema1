@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 
-// Excepción personalizada "MateriaYaRegistradaExcepcion"
 class MateriaYaRegistradaExcepcion : public std::exception {
 public:
     const char* what() const throw() {
@@ -34,7 +33,7 @@ int main() {
         estudiante1.registrarMateria("Matemáticas");
         estudiante1.registrarMateria("Historia");
         estudiante1.registrarMateria("Biología");
-        estudiante1.registrarMateria("Matemáticas");  // Intento de registrar la misma materia nuevamente
+        estudiante1.registrarMateria("Matemáticas");
     } catch (const MateriaYaRegistradaExcepcion& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
