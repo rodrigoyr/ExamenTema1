@@ -3,7 +3,7 @@
 
 int division(int numerador, int denominador) {
     if (denominador == 0) {
-        throw std::string("Error: División por cero no permitida.");
+        throw std::string("Error: Division por cero no permitida.");
     }
     return numerador / denominador;
 }
@@ -19,9 +19,9 @@ int main() {
 
     try {
         int resultado = division(numerador, denominador);
-        std::cout << "Resultado de la división: " << resultado << std::endl;
+        std::cout << "Resultado de la division: " << resultado << std::endl;
     } catch (const std::string &excepcion) {
-        std::cerr << "Excepción atrapada: " << excepcion << std::endl;
+        std::cerr << "Excepcion atrapada: " << excepcion << std::endl;
     }
 
     return 0;
